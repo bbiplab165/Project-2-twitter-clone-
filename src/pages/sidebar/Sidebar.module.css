@@ -1,0 +1,103 @@
+.twitter-sidebar {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    margin: 100px;
+    padding: 45px;
+}
+
+.twitter-icon {
+    color: #1da1f2;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.twitter-menu {
+    flex: 1;
+}
+
+.twitter-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.twitter-menu li {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    cursor: pointer;
+    padding-left: 20px;
+}
+
+.twitter-menu li:hover {
+    background-color: lightgray;
+    color: white;
+}
+
+.twitter-menu li span {
+    font-size: 1.2rem;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.twitter-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1da1f2;
+    color: white;
+    height: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.twitter-button:hover {
+    background-color: #0e81c7;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .twitter-sidebar {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .twitter-menu {
+        display: none;
+    }
+
+    .twitter-icon {
+        margin-right: auto;
+    }
+
+    .twitter-button {
+        margin-left: auto;
+        margin-top: 10px;
+    }
+
+    .twitter-menu li {
+        width: 100%;
+        padding-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .twitter-menu li span {
+        margin-left: 10px;
+        font-size: 1rem;
+    }
+}

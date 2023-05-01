@@ -3,7 +3,10 @@ import { constSelector, useRecoilValue, useSetRecoilState } from "recoil";
 import { tweetsAtom } from "../recoil/tweets";
 import { authAtom, usersAtom } from "../recoil/users";
 import { FeedCard } from "../components/Tweet";
+import Tweet from "./tweets/tweet";
 import { useNavigate } from "react-router-dom";
+import WhoToFollow from "./whoToFollow/WhoToFollow";
+import Sidebar from "./sidebar/Sidebar"
 
 function Feeds() {
   const tweets = useRecoilValue(tweetsAtom);
@@ -54,32 +57,33 @@ function TweetForm() {
     isLiked: false,
   });
 
-  const handlSubmit = (event) => {
-    event.preventDefault();
-    setTweets((tweets) => {
-      return [tweet, ...tweets];
-    });
-  };
+  // const handlSubmit = (event) => {
+  //   event.preventDefault();
+  //   setTweets((tweets) => {
+  //     return [tweet, ...tweets];
+  //   });
+  // };
 
-  const handleChange = (event) => {
-    setTweet({
-      ...tweet,
-      [event.target.name]: event.target.value,
-      image: `https://picsum.photos/1000/500?q=${Date.now()}`,
-    });
-  };
+  // const handleChange = (event) => {
+  //   setTweet({
+  //     ...tweet,
+  //     [event.target.name]: event.target.value,
+  //     image: `https://picsum.photos/1000/500?q=${Date.now()}`,
+  //   });
+  // };
 
   return (
-    <form onSubmit={handlSubmit}>
-      <textarea
-        onChange={handleChange}
-        name="content"
-        className="form-control"
-      ></textarea>
-      <button className="btn btn-success" type="submit">
-        Tweet
-      </button>
-    </form>
+    <inputTweet />
+    // <form onSubmit={handlSubmit}>
+    //   <textarea
+    //     onChange={handleChange}
+    //     name="content"
+    //     className="form-control"
+    //   ></textarea>
+    //   <button className="btn btn-success" type="submit">
+    //     Tweet
+    //   </button>
+    // </form>
   );
 }
 
@@ -114,11 +118,13 @@ export default function HomePage() {
 
       <div>
         <div className="row">
+        
           <div className="col-3 border border-dark">
             <SideBar />
           </div>
           <div className="col-6 border border-dark">
-            <TweetForm />
+            {/* <TweetForm /> */}
+            <Tweet />
             <hr />
             <Feeds />
           </div>
@@ -132,21 +138,9 @@ export default function HomePage() {
 }
 
 function SideBar() {
-  return (
-    <ul>
-      <li>LeftSideBar</li>
-      <li>LeftSideBar</li>
-      <li>LeftSideBar</li>
-    </ul>
-  );
+  return <SideBar/>
 }
 
 function RightSideBar() {
-  return (
-    <ul>
-      <li>RightSideBar</li>
-      <li>RightSideBar</li>
-      <li>RightSideBar</li>
-    </ul>
-  );
+  return <WhoToFollow />;
 }

@@ -3,13 +3,16 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
-import Register from "./pages/Register";
+import Register from "./pages/registration/Registration_1";
+import Register2 from "./pages/registration/Registration_2";
+
 import { fetchTweets } from "./services/tweets";
 import { fetchUsers } from "./services/users";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { tweetsAtom } from "./recoil/tweets";
 import { authAtom, usersAtom } from "./recoil/users";
 import { log } from "joi-browser";
+import Sidebar from "./pages/sidebar/Sidebar";
 
 const PR = ({ children }) => {
   const navigate = useNavigate();
@@ -60,17 +63,25 @@ function App() {
           path="/"
           element={
             <PR>
-              <HomePage />
+              {" "}
+              <HomePage />{" "}
+              <Sidebar/>
             </PR>
           }
         />
+        
         <Route path="/login" element={<Login />} />
         <Route
           path="/register"
           element={
-            <PR>
               <Register />
-            </PR>
+          }
+          className="registerPage1"
+        />
+        <Route
+          path="/register2"
+          element={
+              <Register2 />
           }
         />
       </Routes>
